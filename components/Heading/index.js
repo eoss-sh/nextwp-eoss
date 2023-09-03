@@ -1,12 +1,25 @@
-import React from "react";
-import { getTextAlign, getFontSizeHeading } from "utils/font";
+import React from 'react'
+import {
+    getTextAlign,
+    getFontSizeHeading,
+    getFont,
+    getFontColor,
+} from 'utils/font'
 
-export const Heading = ({ content, level, textAlign }) => {
-  const tag = React.createElement(`h${level}`, {
-    dangerouslySetInnerHTML: { __html: content },
-    className: `font-heading text-white max-w-5xl mx-auto my-auto ${getTextAlign(
-      textAlign
-    )} ${getFontSizeHeading(level)}`,
-  });
-  return tag;
-};
+export const Heading = ({
+    content,
+    level,
+    textAlign,
+    font = 'heading',
+    color = 'base',
+}) => {
+    const tag = React.createElement(`h${level}`, {
+        dangerouslySetInnerHTML: { __html: content },
+        className: `max-w-5xl mx-auto my-auto pb-8 ${getTextAlign(
+            textAlign
+        )} ${getFontSizeHeading(level)} ${getFont(font)} ${getFontColor(
+            color
+        )}`,
+    })
+    return tag
+}
