@@ -6,7 +6,7 @@ const Navbar = () => {
         <header className="flex justify-between items-center max-w-5xl h-20 mx-auto my-auto">
             <Image src={logo} width={100} height={50} alt="Logo" />
             <nav>
-                <ul className="flex gap-8">
+                <ul className="flex gap-8 text-base">
                     <li>
                         <a href="#">Home</a>
                     </li>

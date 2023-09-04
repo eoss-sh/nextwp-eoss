@@ -15,7 +15,7 @@ export const Heading = ({
 }) => {
     const tag = React.createElement(`h${level}`, {
         dangerouslySetInnerHTML: { __html: content },
-        className: `max-w-5xl mx-auto my-auto pb-8 ${getTextAlign(
+        className: `max-w-5xl mx-auto my-auto ${getTextAlign(
             textAlign
         )} ${getFontSizeHeading(level)} ${getFont(font)} ${getFontColor(
             color

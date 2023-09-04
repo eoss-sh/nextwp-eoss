@@ -36,27 +36,34 @@ module.exports = {
                 h1: {
                     fontSize: theme('fontSize.2xl'),
                     fontFamily: theme('fontFamily.body'),
+                    paddingBottom: theme('padding.8'),
                 },
                 h2: {
                     fontSize: theme('fontSize.xl'),
                     fontFamily: theme('fontFamily.body'),
+                    paddingBottom: theme('padding.8'),
                 },
                 h3: {
                     fontSize: theme('fontSize.lg'),
                     fontFamily: theme('fontFamily.heading'),
+                    paddingBottom: theme('padding.4'),
                 },
                 h4: {
-                    fontSize: theme('fontSize.base'),
-                    fontFamily: theme('fontFamily.body'),
+                    fontSize: theme('fontSize.xs'),
+                    fontFamily: theme('fontFamily.heading'),
+                    paddingBottom: theme('padding.4'),
+                    before: {
+                        content: '-',
+                        color: theme('colors.secondary'),
+                    },
                 },
                 p: {
                     fontSize: theme('fontSize.base'),
                     fontFamily: theme('fontFamily.body'),
                 },
                 a: {
-                    fontSize: theme('fontSize.base'),
                     fontFamily: theme('fontFamily.body'),
-                    borderBottom: '2px solid theme("colors.secondary")',
+                    borderBottom: '4px solid theme("colors.secondary")',
                 },
             })
         }),

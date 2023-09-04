@@ -1,47 +1,44 @@
-import { useEffect, useState, useRef } from 'react'
+import { useContext } from 'react'
+import { CustomCursorContext } from 'pages/_app'
 import { motion } from 'framer-motion'
-import { useMouse } from '@uidotdev/usehooks'
+import useMousePosition from 'hooks/useMousePosition'
 
 const CustomCursor = () => {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-    const [mouse] = useMouse()
+    const { cursorType, setCursorType } = useContext(CustomCursorContext)
 
-    console.log(mouse)
+    const mousePosition = useMousePosition()
+
     const variants = {
         default: {
-            x: mouse.x,
-            y: mouse.y - 75,
+            x: mousePosition.x,
+            y: mousePosition.y - 75,
             transition: {
                 type: 'spring',
                 mass: 0.6,
             },
         },
+        link: {
+            x: mousePosition.x + 50,
+            y: mousePosition.y - 75,
+            scale: 10,
+        },
     }
 
     const spring = {
         type: 'spring',
-        stiffness: 500,
-        damping: 28,
+        stiffness: 80,
+        damping: 15,
     }
 
-    const mouseMoveHandler = (e) => {
-        const { clientX: x, clientY: y } = e
-        setMousePosition({ x, y })
-    }
-
-    useEffect(() => {
-        window.addEventListener('mousemove', mouseMoveHandler)
-        return () => {
-            window.removeEventListener('mousemove', mouseMoveHandler)
-        }
-    }, [])
     return (
         <motion.div
             variants={variants}
-            animate="default"
+            animate={cursorType.type}
             transition={spring}
-            className="fixed w-2.5 h-2.5 bg-secondary rounded-lg pointer-events-none z-50"
-        ></motion.div>
+            className="fixed w-2.5 h-2.5 bg-secondary rounded-lg pointer-events-none z-50 flex items-center justify-center"
+        >
+            <p className="text-[2px]">{cursorType.text}</p>
+        </motion.div>
     )
 }
 
